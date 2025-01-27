@@ -3,53 +3,184 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A colorful Docsify-powered website with interactive elements and animations.">
+  <meta name="keywords" content="Docsify, HTML, CSS, JavaScript, interactive, colorful, weather">
+  <meta property="og:title" content="My Colorful Docsify Website">
+  <meta property="og:description" content="A colorful Docsify website showcasing projects, weather, and more.">
+  <meta property="og:image" content="https://via.placeholder.com/150">
+  <meta property="og:url" content="https://yourusername.github.io/yourrepository">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:creator" content="@yourhandle">
   <title>My Colorful Docsify Website</title>
   
   <!-- Docsify CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4.11.4/themes/vue.css">
 
-  <!-- Custom CSS for styling -->
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Custom CSS for the page -->
   <style>
     body {
-      font-family: 'Arial', sans-serif;
-      background-color: #f0f8ff; /* Light blue background */
+      font-family: 'Roboto', sans-serif;
+      background-color: #f4f4f4;
       color: #333;
+      margin: 0;
+      padding: 0;
     }
+
     h1, h2, h3 {
-      color: #FF6347; /* Tomato color for headers */
+      color: #2E8B57; /* Nice green color */
     }
+
     a {
-      color: #1e90ff; /* Dodger blue color for links */
+      color: #FF6347; /* Tomato color for links */
     }
+
     a:hover {
-      color: #FF4500; /* Orange red for link hover */
+      color: #4682B4; /* Change link color on hover */
     }
+
     .sidebar {
-      background-color: #48D1CC; /* Medium turquoise for the sidebar */
+      background-color: #48D1CC; /* Medium turquoise for sidebar */
       color: white;
     }
+
     .content {
       background-color: #fff;
       padding: 20px;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      margin: 20px auto;
+      max-width: 800px;
       border-radius: 8px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     }
+
+    /* Navbar Styling */
+    header {
+      position: fixed;
+      width: 100%;
+      background-color: #333;
+      color: white;
+      padding: 10px 0;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+    }
+
+    nav a {
+      color: white;
+      margin-right: 20px;
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* Weather info styling */
+    #weather {
+      margin-top: 20px;
+      background-color: #FFD700;
+      padding: 10px;
+      border-radius: 5px;
+      text-align: center;
+    }
+
+    /* Contact form styling */
+    form {
+      display: flex;
+      flex-direction: column;
+      margin-top: 20px;
+    }
+
+    input, button {
+      margin-bottom: 10px;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+
+    button {
+      background-color: #2E8B57;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #FF6347;
+    }
+
+    /* Animation for elements */
+    .animate__animated {
+      animation-duration: 1.5s;
+    }
+    .animate__bounce {
+      animation-name: bounce;
+    }
+
   </style>
 </head>
+
 <body>
-  <div id="app"></div>
+  <!-- Header / Navigation -->
+  <header>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Main content -->
+  <div id="app">
+    <!-- Docsify will load the content here -->
+    <div class="content">
+      <h1 class="animate__animated animate__bounce">Welcome to My Colorful Docsify Website</h1>
+      <p>This website is powered by Docsify and features interactive elements, animations, and more!</p>
+      
+      <h2>Check the Weather:</h2>
+      <div id="weather">Loading weather...</div>
+
+      <h2>Contact Me</h2>
+      <form action="https://formspree.io/f/yourformid" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        
+        <button type="submit">Submit</button>
+      </form>
+
+      <h2>Watch This Cool Video:</h2>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </div>
 
   <!-- Docsify JS -->
   <script src="https://cdn.jsdelivr.net/npm/docsify@4.11.4/lib/docsify.min.js"></script>
 
   <script>
+    // Docsify configuration
     window.$docsify = {
       name: 'My Docsify Website',
-      repo: 'https://github.com/ostifede02/my_webpage',
+      repo: 'https://github.com/yourusername/yourrepository',
       loadSidebar: true,
       subMaxLevel: 2,
       auto2top: true
-    }
+    };
+
+    // Fetch weather data
+    fetch('https://api.openweathermap.org/data/2.5/weather?q=London&appid=your-api-key')
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('weather').innerHTML = `The weather in London is ${data.weather[0].description}.`;
+      });
+
   </script>
 </body>
 </html>
