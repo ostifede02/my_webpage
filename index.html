@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Colorful Docsify Website</title>
+  
+  <!-- Docsify CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4.11.4/themes/vue.css">
+
+  <!-- Custom CSS for styling -->
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f0f8ff; /* Light blue background */
+      color: #333;
+    }
+    h1, h2, h3 {
+      color: #FF6347; /* Tomato color for headers */
+    }
+    a {
+      color: #1e90ff; /* Dodger blue color for links */
+    }
+    a:hover {
+      color: #FF4500; /* Orange red for link hover */
+    }
+    .sidebar {
+      background-color: #48D1CC; /* Medium turquoise for the sidebar */
+      color: white;
+    }
+    .content {
+      background-color: #fff;
+      padding: 20px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div id="app"></div>
+
+  <!-- Docsify JS -->
+  <script src="https://cdn.jsdelivr.net/npm/docsify@4.11.4/lib/docsify.min.js"></script>
+
+  <script>
+    window.$docsify = {
+      name: 'My Docsify Website',
+      repo: 'https://github.com/yourusername/yourrepository',
+      loadSidebar: true,
+      subMaxLevel: 2,
+      auto2top: true
+    }
+  </script>
+</body>
+</html>
